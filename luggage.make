@@ -84,7 +84,11 @@ BUILD_D=${SCRATCH_D}/build
 # package's Makefile.
 
 PM_EXTRA_ARGS=--verbose --no-recommend --no-relocate
+ifeq (${FILTER}, '')
 PM_FILTER=--filter "/\.svn$$" --filter "/CVS$$" --filter "/\.cvsignore$$" --filter "/\.cvspass$$" --filter "/\.git$$" --filter "/\.gitignore$$" --filter "/(\._)?\.DS_Store$$" --filter "/\.hg$$"
+else
+PM_FILTER=${FILTER}
+endif
 
 # package build parameters
 #
